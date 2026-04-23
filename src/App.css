@@ -101,6 +101,17 @@ a {
     align-items: center;
     justify-content: center;
 }
+.j-left{
+    justify-content: left;
+}
+.color-pr{
+    color: var(--primary) !important;
+
+}
+.he{
+    /* margin-top: -4px; */
+    color: var(--primary) !important;
+}
 
 .flex-wrap {
     display: flex;

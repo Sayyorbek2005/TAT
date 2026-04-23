@@ -1,8 +1,7 @@
-// import { Button } from "../../style/StyleComponent";
 import { useState } from "react";
-import logo_header from "../../assets/hed_logo.svg";
 import { NavLink, useNavigate } from "react-router-dom";
-import { Modal } from "antd";
+import { LuPhone, LuMenu, LuX } from "react-icons/lu"; // Ikonkalar
+import logo_header from "../../assets/hed_logo.svg";
 
 import {
   HeaderWrapper,
@@ -17,20 +16,19 @@ import {
 
 const Header = () => {
   const navigate = useNavigate();
-
-  const [isModalOpen, setIsModalOpen] = useState(false);
   const [isActive, setIsActive] = useState(false);
-  
 
-  const handleClick = () => setIsActive(!isActive);
-  const closeMenu = () => setIsActive(false);
+  const toggleMenu = () => setIsActive(!isActive);
 
   return (
     <>
       <HeaderWrapper>
-        <Container className="max-width">
-          <Logo src={logo_header} onClick={() => navigate("/")} />
+        <div className="max-width">
 
+        <Container>
+          <Logo src={logo_header} onClick={() => navigate("/")} alt="Logo" />
+
+          {/* Desktop Nav */}
           <Nav>
             <li><NavLink to="/">Bosh sahifa</NavLink></li>
             <li><NavLink to="/kurslar">Kurslar</NavLink></li>
@@ -38,41 +36,39 @@ const Header = () => {
             <li><NavLink to="/online">Online kurslar</NavLink></li>
           </Nav>
 
-          <MenuIcon className="bx bx-menu" onClick={handleClick} />
-
+          {/* Desktop Telefon */}
           <Right>
-            <a href="tel:+998886110440">+998 (88) 611-04-40</a>
-            {/* <Button onClick={() => setIsModalOpen(true)}>
-              Ro‘yxatdan o‘tish
-            </Button> */}
+            <a href="tel:+998886110440">
+              <LuPhone /> +998 (88) 611-04-40
+            </a>
           </Right>
+
+          {/* Mobil uchun Menu Icon */}
+          <MenuIcon onClick={toggleMenu}>
+            {isActive ? <LuX /> : <LuMenu />}
+          </MenuIcon>
         </Container>
+          </div>
       </HeaderWrapper>
 
-      {isActive && <Overlay onClick={closeMenu} />}
+      {/* Orqa fon xiralashishi */}
+      <Overlay active={isActive} onClick={toggleMenu} />
 
+      {/* O'ngdan chiquvchi mobil menyu */}
       <MobileMenu active={isActive}>
         <ul>
-          <li><NavLink to="/">Bosh sahifa</NavLink></li>
-          <li><NavLink to="/kurslar">Kurslar</NavLink></li>
-          <li><NavLink to="/ustozlar">Ustozlar</NavLink></li>
-          <li><NavLink to="/online">Online kurslar</NavLink></li>
-
-          {/* <Button onClick={() => setIsModalOpen(true)}>
-            Ro‘yxatdan o‘tish
-          </Button> */}
-
-          <a href="tel:+998886110440">+998 (88) 611-04-40</a>
+          <li onClick={toggleMenu}><NavLink to="/">Bosh sahifa</NavLink></li>
+          <li onClick={toggleMenu}><NavLink to="/kurslar">Kurslar</NavLink></li>
+          <li onClick={toggleMenu}><NavLink to="/ustozlar">Ustozlar</NavLink></li>
+          <li onClick={toggleMenu}><NavLink to="/online">Online kurslar</NavLink></li>
         </ul>
-      </MobileMenu>
 
-      <Modal
-        open={isModalOpen}
-        onCancel={() => setIsModalOpen(false)}
-        footer={null}
-      >
-        <h2>Ro‘yxatdan o‘tish tez orada ishga tushiriladi.</h2>
-      </Modal>
+        <div className="display-flex j-left">
+          <a href="tel:+998886110440">
+            <LuPhone /> +998 (88) 611-04-40
+          </a>
+        </div>
+      </MobileMenu>
     </>
   );
 };

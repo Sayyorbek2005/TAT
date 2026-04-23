@@ -1,144 +1,135 @@
 import styled, { keyframes } from "styled-components";
 
-/* HEADER */
+/* LOGO UCHUN ANIMATSIYA */
+const jelloHorizontal = keyframes`
+  0% { transform: scale3d(1, 1, 1); }
+  30% { transform: scale3d(1.1, 0.9, 1); }
+  40% { transform: scale3d(0.9, 1.1, 1); }
+  100% { transform: scale3d(1, 1, 1); }
+`;
+
 export const HeaderWrapper = styled.header`
   position: fixed;
   top: 0;
   width: 100%;
-  background: rgba(255, 255, 255, 0.47);
-  backdrop-filter: blur(10px);
-  box-shadow: 0 5px 10px rgba(119, 119, 119, 0.1);
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(12px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
   z-index: 1000;
 `;
 
-/* CONTAINER */
 export const Container = styled.div`
- 
   display: flex;
   align-items: center;
   justify-content: space-between;
   padding: 10px 0px;
 `;
 
-
-
-/* ANIMATION - AVVAL */
-const jelloHorizontal = keyframes`
-  0% {
-    transform: scale3d(1, 1, 1);
-  }
-  30% {
-    transform: scale3d(1.1, 0.9, 1);
-  }
-  40% {
-    transform: scale3d(0.9, 1.1, 1);
-  }
-  50% {
-    transform: scale3d(1.05, 0.95, 1);
-  }
-  65% {
-    transform: scale3d(0.98, 1.02, 1);
-  }
-  75% {
-    transform: scale3d(1.02, 0.98, 1);
-  }
-  100% {
-    transform: scale3d(1, 1, 1);
-  }
-`;
-
-/* LOGO */
 export const Logo = styled.img`
   height: 60px;
   cursor: pointer;
-  transition: transform 0.2s ease-in-out;
-
-  &:hover {
-    animation: ${jelloHorizontal} 0.6s both;
-  }
+  &:hover { animation: ${jelloHorizontal} 0.6s both; }
 `;
 
-
-/* NAV */
+/* KOMPYUTER UCHUN NAVIGATSIYA */
 export const Nav = styled.ul`
   display: flex;
-  gap: var(--gap-20);
+  gap: var(--gap-30);
   list-style: none;
+  margin: 0;
 
   a {
     text-decoration: none;
     color: var(--black);
-    transition: 0.3s;
-    font-size: var(--font-size-16);
     font-weight: var(--font-weight-600);
-
-    &:hover {
-      color: var(--primary) !important;
-    }
+    font-size: var(--font-size-16) !important;
+    font-size: 15px;
+    transition: 0.3s;
+    &.active { color: var(--primary); }
+    &:hover { color: var(--primary); }
   }
 
-  .active {
-    color: var(--primary);
+  @media (max-width: 992px) {
+    display: none; /* 992px dan kichik ekranda yo'qoladi */
   }
-
-
-
 `;
 
-/* RIGHT SIDE */
+/* KOMPYUTER UCHUN O'NG TOMON */
 export const Right = styled.div`
   display: flex;
   align-items: center;
-  gap: var(--gap-20);
 
   a {
-    font-size: var(--font-size-16);
-    font-weight: var(--font-weight-600);
+    font-weight: var(--font-weight-700);
+    font-size: var(--fontsize-18);
     text-decoration: none;
-    color: var(--primary);
+    /* color: var(--primary); */
+    display: flex;
+    align-items: center;
+    gap: var(--gap-10);
+  }
+
+  @media (max-width: 992px) {
+    display: none; /* 992px dan kichik ekranda yo'qoladi */
   }
 `;
 
-/* MENU ICON */
-export const MenuIcon = styled.i`
+/* MENU ICON (FAQAT MOBILDA CHIQADI) */
+export const MenuIcon = styled.div`
   display: none;
-  font-size: var(--font-size-30);
+  font-size: var(--font-size-35);
   cursor: pointer;
+  color: #333;
 
-  @media (max-width: 768px) {
-    display: block;
+  @media (max-width: 992px) {
+    display: flex;
+    align-items: center;
   }
 `;
 
-/* MOBILE MENU */
+/* MOBIL MENYU PANELI */
 export const MobileMenu = styled.div`
   position: fixed;
   top: 0;
-  right: ${({ active }) => (active ? "0" : "-100%")};
-  width: 70%;
+  right: 0;
+  width: 300px;
   height: 100vh;
-  background: var(--primary);
-  transition: 0.3s ease;
-  padding: 40px;
-  z-index: 999;
+  background: #fff;
+  z-index: 1001;
+  padding: 60px 30px;
+  display: flex;
+  flex-direction: column;
+  gap: var(--gap-30);
+  box-shadow: -8px 0 25px rgba(0, 0, 0, 0.15);
+  
+  /* Animatsiya qismi */
+  transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  transform: ${({ active }) => (active ? "translateX(0)" : "translateX(100%)")};
 
   ul {
     list-style: none;
+    padding: 0;
     display: flex;
     flex-direction: column;
     gap: var(--gap-20);
-  }
 
-  a {
-    color: var(--primary) !;
-    text-decoration: none;
+    a {
+      text-decoration: none;
+      color: #333;
+      font-size: var(--font-size-25);
+      font-weight: var(--font-weight-600);
+      &.active { color: var(--primary); }
+    }
   }
 `;
 
-/* OVERLAY */
 export const Overlay = styled.div`
   position: fixed;
   inset: 0;
-  background: rgba(0,0,0,0.4);
-  z-index: 998;
+  background: rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(4px);
+  z-index: 1000;
+  opacity: ${({ active }) => (active ? "1" : "0")};
+  visibility: ${({ active }) => (active ? "visible" : "hidden")};
+  transition: 0.3s ease;
 `;
