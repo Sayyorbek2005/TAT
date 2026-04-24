@@ -92,7 +92,9 @@ export const MobileMenu = styled.div`
   position: fixed;
   top: 0;
   right: 0;
-  width: 300px;
+  max-width: 500px;
+  width: 100%;
+  border-bottom-left-radius: 300px;
   height: 100vh;
   background: #fff;
   z-index: 1001;
@@ -101,6 +103,7 @@ export const MobileMenu = styled.div`
   flex-direction: column;
   gap: var(--gap-30);
   box-shadow: -8px 0 25px rgba(0, 0, 0, 0.15);
+
   
   /* Animatsiya qismi */
   transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
