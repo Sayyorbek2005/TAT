@@ -4,6 +4,9 @@ import NotFound from "../components/notFound/NotFound";
 import Kurslar from "../pages/kurslar/Kurslar";
 import Teachers from "../pages/ustozlar/Teachers";
 import Online from "../pages/onlineCourses/Online";
+import Course from "../pages/course/Course"
+
+import ModalKons from "../components/modals/modalKonsultatsia/ModalKons"
 
 export const routes = [
   {
@@ -29,5 +32,13 @@ export const routes = [
   {
     path: "*",
     element: <NotFound />
+  },
+  {
+    path: "course",
+    element: <Course />
+  },
+  {
+    path: "modalKons",
+    element: <ModalKons />
   }
 ];

@@ -1,13 +1,14 @@
 import styled from "styled-components";
 
 export const FormWrapper = styled.div`
- background-color: var(--shadow-color);
+ border: 1px solid var(--white);
  backdrop-filter: blur(10px);
   color: var(--white);
   padding: 20px;
   border-radius: 8px;
   max-width: 400px;
   margin: auto;
+  box-shadow: 0px 0px 10px white;
 
   form {
     width: 100%;

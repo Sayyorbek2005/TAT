@@ -10,7 +10,7 @@ import { Button } from "../../../style/StyleComponent";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
-function ModalKons() {
+function ModalKons({ onClose }) {
   const [formData, setFormData] = useState({
     name: "",
     phone: "+998",
@@ -65,11 +65,6 @@ function ModalKons() {
       const token = process.env.REACT_APP_BOT_TOKEN;
       const chatId = process.env.REACT_APP_CHAT_ID;
 
-      // console.log('====================================');
-      // console.log(token);
-      // console.log(chatId);
-      // console.log('====================================');
-
       const message = `
 📥 Yangi Konsultatsiya
 👤 Ism: ${formData.name}
@@ -102,10 +97,14 @@ function ModalKons() {
         });
 
         setErrors({});
+
+        // 👇 3 soniyadan keyin modal yopiladi
+        setTimeout(() => {
+          onClose();
+        }, 3000);
       } else {
         toast.error("Yuborilmadi ❌ Telegram xatolik");
       }
-
     } catch (error) {
       console.log(error);
       toast.error("Internet yoki server xatolik ❌");
@@ -162,7 +161,7 @@ function ModalKons() {
         </Button>
       </form>
 
-       <ToastContainer
+      <ToastContainer
         position="top-right"
         autoClose={3000}
         hideProgressBar={false}
@@ -170,7 +169,6 @@ function ModalKons() {
         closeOnClick
         pauseOnHover
         draggable
-        // theme="colored"
       />
     </FormWrapper>
   );
