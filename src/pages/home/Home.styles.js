@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 /* WRAPPER */
 export const SectionWrapper = styled.section`
-  padding: 80px 0;
+  padding: 50px 0;
   background: #f5f5f5;
 `;
 

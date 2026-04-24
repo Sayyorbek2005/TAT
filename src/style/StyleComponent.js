@@ -5,7 +5,7 @@ export const Title = styled.h1`
   font-weight: var(--font-weight-500);
   color: var(--dark-primary-color) !important;
   text-align: center;
-  padding:50px 0px;
+  padding:100px 0px 50px 0px;
   max-width: 1000px;
   margin: auto;
   font-family: 'MyCustomFont';

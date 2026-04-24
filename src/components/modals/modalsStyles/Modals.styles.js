@@ -9,6 +9,7 @@ export const FormWrapper = styled.div`
   max-width: 400px;
   margin: auto;
   box-shadow: 0px 0px 10px white;
+  margin: 0px 10px;
 
   form {
     width: 100%;

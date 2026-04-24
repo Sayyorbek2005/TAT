@@ -7,21 +7,17 @@ import {
   Tags,
 
 } from "./Home.styles";
-// ? ant
-// import React, { useState } from 'react';
-// import { Modal } from 'antd';
 
 
 import { Button, ModalBackground, Title } from "../../style/StyleComponent";
 
-import img from "../../assets/hero.png"; // o‘zingni rasmingni qo‘y
+import img from "../../assets/hero.png"; 
 import { useNavigate } from "react-router-dom";
 import ModalKons from "../../components/modals/modalKonsultatsia/ModalKons";
 import { useState } from "react";
 
 const Home = () => {
-  // ? for modal from ant
-  //  const [modal2Open, setModal2Open] = useState(false);
+
   const [show, setShow] = useState(false)
 
   //  ? go kourse
@@ -70,24 +66,9 @@ const Home = () => {
 
           </p>
 
-          {/* <Button onClick={() => Navigate("/modalKons")}>Bepul konsultatsiya olish</Button> */}
-
           <Button onClick={() => setShow(true)}>Bepul konsultatsiya olish</Button>
         </Right>
-        {/* ?modal */}
-        {/* <Modal
-        title="Vertically centered modal dialog"
-        centered
-        open={modal2Open}
-        onOk={() => setModal2Open(false)}
-        onCancel={() => setModal2Open(false)}
-      >
-        <p>some contents...</p>
-        <p>some contents...</p>
-        <p>some contents...</p>
-      </Modal> */}
-
-
+    
       {show && (
   <ModalBackground onClick={() => setShow(false)}>
     <div onClick={(e) => e.stopPropagation()}>
